@@ -9,6 +9,8 @@ build HTML templates with Bob
 ## Initialization
 
 ```js
+// Assumes there is a template file already created
+// containing a Template class
 import Template from 'template';
 
 // an array or object
