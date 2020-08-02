@@ -11,10 +11,10 @@ build HTML templates with Bob
 ```js
 import Template from 'template';
 
-// Assumes a template has been created. You only need to build the root template
 // an array or object
 const data = [] || {}
 
+// You only need to build the root template
 const template = new Template(data);
 const appMount = document.getElementById('app');
 
