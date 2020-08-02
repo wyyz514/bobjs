@@ -1,11 +1,11 @@
 const openingTagRegex = new RegExp(
-  /^<([a-z0-9]+)\s*?(([a-z-]+=("|')[a-zA-Z-0-9,=:/\-.?#+'><|{} ]*("|')\s*)*)>/
+  /^<([a-z0-9]+)\s*?(([a-z-]+=("|')[a-zA-Z-0-9,=:/\-.?#+'><|{}(); ]*("|')\s*)*)>/
 );
 const closingTagRegex = new RegExp(/^<\/([a-z0-9]+)>/);
 const selfTerminatingTagRegex = new RegExp(
   /^<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\s*(([a-z-]+?=("|')[a-zA-Z-0-9,=:/\-.?#+| ]*("|')\s*)+)?(\/|)?>/
 );
-const textRegex = new RegExp(/^([a-zA-Z0-9!:${}\[\]\.|(),\- ]+)\s*?</);
+const textRegex = new RegExp(/^([a-zA-Z0-9!:${}@\[\]\.|(),\-'&;s ]+)\s*?</);
 
 export default class Lumber {
   static _rest(index) {
