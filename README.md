@@ -9,17 +9,17 @@ build HTML templates with Bob
 ## Initialization
 
 ```js
-	import Template from 'template';
-	
-	// Assumes a template has been created. You only need to build the root template
-	// an array or object
-	const data = [] || {}
-	
-	const template = new Template(data);
-	const appMount = document.getElementById('app');
-	
-	// returns a compiled string of the template with data interpolated
-	appMount.innerHTML += template.build().render();
+import Template from 'template';
+
+// Assumes a template has been created. You only need to build the root template
+// an array or object
+const data = [] || {}
+
+const template = new Template(data);
+const appMount = document.getElementById('app');
+
+// returns a compiled string of the template with data interpolated
+appMount.innerHTML += template.build().render();
 ```
 ## Basic Template Class Declaration
 
