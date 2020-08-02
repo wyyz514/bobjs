@@ -1,6 +1,15 @@
 # bobjs
 build HTML templates with Bob
 
+## Initialization
+
+```js
+	// Assumes a template has been created. You only need to build the root template
+	const data = [] || {} // an array or object
+	const template = new Template(data);
+	const appMount = document.getElementById('app');
+	appMount.innerHTML += template.build().render(); // returns a compiled string of the template with data interpolated
+```
 ## Basic Template Class Declaration
 
 ```js
