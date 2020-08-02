@@ -8,7 +8,8 @@ build HTML templates with Bob
 	const data = [] || {} // an array or object
 	const template = new Template(data);
 	const appMount = document.getElementById('app');
-	appMount.innerHTML += template.build().render(); // returns a compiled string of the template with data interpolated
+	// returns a compiled string of the template with data interpolated
+	appMount.innerHTML += template.build().render();
 ```
 ## Basic Template Class Declaration
 
