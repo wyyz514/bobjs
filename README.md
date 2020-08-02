@@ -18,7 +18,7 @@ class Template extends Bob {
 	    </p>`;
     }
 }
-
+```
 
 ## Composing templates
 
@@ -60,7 +60,7 @@ class ListItem extends Bob {
           </div>`;
     }
 }
-
+```
 
 ## Conditionals
 
@@ -93,6 +93,6 @@ class ListItem extends Bob {
           </div>`;
     }
 }
-
+```
 
  ### Recursive templates
