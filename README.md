@@ -1,6 +1,11 @@
 # bobjs
 build HTML templates with Bob
 
+## Installation
+-  Clone repo
+-  Import Bob from `src/Bob` to your file
+-  Follow the steps below
+
 ## Initialization
 
 ```js
@@ -106,3 +111,8 @@ class ListItem extends Bob {
 ```
 
  ### Recursive templates
+
+
+### Todo
+-  Add tests
+-  npm
