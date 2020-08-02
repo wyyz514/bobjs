@@ -15,7 +15,7 @@ build HTML templates with Bob
 
 ```js
 class Template extends Bob {
-
+    // root template
     constructor(data) {
        super(data);
     }
@@ -37,7 +37,7 @@ class Template extends Bob {
 
 
 class List extends Bob {
-    
+    // root template
     constructor(data) {
 	super(data);
         this.childTemplates = { ListItem }; 
