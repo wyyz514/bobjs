@@ -11,7 +11,7 @@ export default class Tools extends Bob {
   template() {
     return `
      <div>
-       <h2>Bob's Tools</h2>
+       <h2>Lists</h2>
         <ul>
           <each>
             {{Tool|(index)}}

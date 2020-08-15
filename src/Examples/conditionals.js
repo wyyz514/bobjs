@@ -10,8 +10,8 @@ export default class ShowDrills extends Bob {
   template() {
     return `
       <div>
-       <h2>My Tools</h2>
-       <h4>Non-drill tools are struckthrough</h4>
+       <h2>Conditionals</h2>
+       <p style="color: red">Non-drill tools are struckthrough</p>
         <each>
           {{Tool|(index)}}
         </each>
@@ -36,7 +36,7 @@ class Tool extends Bob {
         </good>
         <bad>
         <div>
-          <s>{brand}&nbsp;<small>{type}</small></s>
+          <s>This is not a drill</s>
         </div>
         </bad>
       </check>
