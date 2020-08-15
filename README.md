@@ -119,7 +119,7 @@ class ListItem extends Bob {
 }
 ```
 
-### Recursive templates
+## Recursive templates
 
 ```js
 import Bob from "../Bob";
@@ -173,7 +173,7 @@ export class MenuTitle extends Bob {
 }
 ```
 
-### index.js (file containing data and inits)
+## index.js (file containing data and inits)
 
 ```js
 import HelloBob from "./Examples/hellobob";
