@@ -1,11 +1,35 @@
 # bobjs
 build HTML templates with Bob
 
+## Installation
+-  Clone repo
+-  Import Bob from `src/Bob` to your file
+-  Follow the steps below
+
+## Initialization
+
+```js
+// Assumes there is a template file already created
+// containing a Template class
+import Template from 'template';
+
+// an array or object
+const data = [] || {}
+
+// You only need to build the root template
+const template = new Template(data);
+const appMount = document.getElementById('app');
+
+// returns a compiled string of the template with data interpolated
+appMount.innerHTML += template.build().render();
+```
 ## Basic Template Class Declaration
 
 ```js
-class Template extends Bob {
+import Bob from './src/Bob';
 
+class Template extends Bob {
+    // root template
     constructor(data) {
        super(data);
     }
@@ -27,7 +51,7 @@ class Template extends Bob {
 
 
 class List extends Bob {
-    
+    // root template
     constructor(data) {
 	super(data);
         this.childTemplates = { ListItem }; 
@@ -148,3 +172,7 @@ export class MenuTitle extends Bob {
   }
 }
 ```
+
+### Todo
+-  Add tests
+-  npm
