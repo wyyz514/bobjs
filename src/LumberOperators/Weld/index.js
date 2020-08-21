@@ -1,5 +1,6 @@
 let pointer = 0;
 
+// weld child templates into parent by placing processed child template content in parent
 export default function weld({ lumberObj, data, childTemplates }) {
   const templateRegex = new RegExp(/{{([a-zA-Z]+)}}/);
   if (!lumberObj) {
