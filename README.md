@@ -4,9 +4,16 @@ build HTML templates with Bob
 ## Installation
 -  Clone repo
 -  Import Bob from `src/Bob` to your file
--  Follow the steps below
+-  Follow the steps after `View Examples locally`
 
-## Initialization
+## Viewing Examples locally (assumes a Webpack installation)
+-   Clone repo
+-   `cd src && webpack index.js` to create `src/dist/main.js`
+-   Open `src/index.html`. Personally I run a Python server in the `src` directory `python -m SimpleHTTPServer [PORT]` or `python -m http.server [PORT]` for Python v3+
+-   Update any of the Example files in `src/Examples` and rerun `webpack index.js` in the `src` directory. Notice that all examples are imported into `src/Examples.js`. If creating a new file, make sure to import it in `src/Examples.js` and include the template invocation in the `template()` function.
+-   Reload `localhost:[PORT]`
+
+## Building templates
 
 ```js
 // Assumes there is a template file already created
@@ -171,105 +178,6 @@ export class MenuTitle extends Bob {
     return `<h2>Recursive Menu</h2>`;
   }
 }
-```
-
-## index.js (file containing data and inits)
-
-```js
-import HelloBob from "./Examples/hellobob";
-import Tools from "./Examples/lists";
-import ShowDrills from "./Examples/conditional";
-import RecursiveMenu, { MenuTitle } from "./Examples/recursive";
-
-import "./styles.css";
-
-const appMount = document.getElementById("app");
-
-const helloBob = new HelloBob({ name: "Bob" });
-
-const tools = new Tools([
-  {
-    name: "Drill",
-    description: "To drill stuff"
-  },
-  {
-    name: "Saw",
-    description: "To saw stuff"
-  }
-]);
-
-const showOnlyDrills = new ShowDrills([
-  {
-    type: "drill",
-    brand: "Bosch"
-  },
-  {
-    type: "saw",
-    brand: "Bosch"
-  },
-  {
-    type: "drill",
-    brand: "Black & Decker"
-  }
-]);
-
-const recursiveMenu = new RecursiveMenu([
-  {
-    nodeName: "Node 1",
-    nodes: [
-      {
-        nodeName: "Node 1.1",
-        nodes: []
-      },
-      {
-        nodeName: "Node 1.2",
-        nodes: [
-          {
-            nodeName: "Node 1.2.1",
-            nodes: []
-          },
-          {
-            nodeName: "Node 1.2.2",
-            nodes: []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    nodeName: "Node 2",
-    nodes: [
-      {
-        nodeName: "Node 2.1",
-        nodes: [
-          {
-            nodeName: "Node 2.1.1",
-            nodes: [
-              {
-                nodeName: "Node 2.1.1.1",
-                nodes: []
-              },
-              {
-                nodeName: "Node 2.1.1.2",
-                nodes: []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        nodeName: "Node 2.2",
-        nodes: []
-      }
-    ]
-  }
-]);
-
-appMount.innerHTML = helloBob.build().render();
-appMount.innerHTML += tools.build().render();
-appMount.innerHTML += showOnlyDrills.build().render();
-appMount.innerHTML += new MenuTitle().build().render();
-appMount.innerHTML += recursiveMenu.build().render();
 ```
 
 ### Todo
