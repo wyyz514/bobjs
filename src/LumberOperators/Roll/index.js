@@ -2,9 +2,10 @@ import Drill from "../../Utilities/Drill";
 
 let pointer = 0;
 
+// roll child templates into parent by building them and replacing built content in parent
 export default function roll({ lumberObj, data, childTemplates }) {
   const hasBoundDataTemplateRegex = new RegExp(
-    /{{(([a-zA-Z]+)\|([a-z.0-9]+))}}/
+    /{{(([a-zA-Z]+)\|([a-zA-Z.0-9]+))}}/
   );
   if (!data) {
     return lumberObj;
