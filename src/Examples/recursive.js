@@ -48,4 +48,3 @@ export class MenuTitle extends Bob {
   }
 }
 
-
