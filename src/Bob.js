@@ -83,4 +83,8 @@ export default class Bob {
     this._rollTemplates();
     return this;
   }
+
+  render() {
+    return this._toString();
+  }
 }
