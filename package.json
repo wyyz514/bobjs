@@ -1,19 +1,15 @@
 {
-  "name": "vanilla",
+  "name": "bobjs",
   "version": "1.0.0",
-  "description": "JavaScript example starter project",
-  "main": "index.html",
+  "description": "HTML template builder",
+  "main": "index.js",
   "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+	"build": "webpack ./src/index.js --output ./dist/main.js"
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.2.0",
-    "parcel-bundler": "^1.6.1"
   },
   "keywords": [
-    "javascript",
-    "starter"
+    "html template"
   ]
 }

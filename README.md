@@ -1,168 +1,60 @@
 # bobjs
 build HTML templates with Bob
 
-## Installation and Usage
--  Clone repo
--  Import Bob from `src/Bob` to your template file
--  Follow the steps from `Basic Template Class Declaration`
+This repository contains the source code for Bob as well as the source code for a series of examples on
+how to use Bob to create HTML templates. The examples cover topics such as basic templating, conditionals and recursive templates.
 
-## Viewing and Modifying Examples locally (assumes a Webpack global install)
--   Clone repo
--   `cd src && webpack index.js` to create `src/dist/main.js`
--   Open `src/index.html`. Personally I run a Python server in the `src` directory `python -m SimpleHTTPServer [PORT]` or `python -m http.server [PORT]` for Python v3+
--   Update any of the Example files in `src/Examples` and rerun `webpack index.js` in the `src` directory. Notice that all examples are imported into `src/Examples.js`. If creating a new file, make sure to import it in `src/Examples.js` and include the template invocation in the `template()` function.
--   Reload `localhost:[PORT]`
+### Basic template creation
 
-## Basic Template Class Declaration
-
-```js
-import Bob from './src/Bob';
-
-class Template extends Bob {
-    // root template
-    constructor(data) {
-       super(data);
-    }
-
-    template() {
-        // assuming data is an object and has properties name, description
-        return 
-            `<p>
-                {name} - {description}
-	    </p>`;
-    }
-}
-```
-
-## Composing templates
-
+-  Clone repo into your project folder
+-  Create a script for your custom template
+-  Import `Bob` into your script
 
 ```js
 
+    import Bob from './bobjs/src/Bob';
 
-class List extends Bob {
-    // root template
-    constructor(data) {
-	super(data);
-        this.childTemplates = { ListItem }; 
+    class MyCustomTemplate extends Bob {
+
+	constructor (data) {
+	    super(data);
+        }
+
+        template () {
+	    return `<h1>My custom template is {name}</h1>`;
+        }
     }
-
-
-    template() {
-        // when data is an array, the each reserved keyword tag should be used
-        // relevant data is bound by index to the template
-        return 
-         `<each>
-             {{ListItem|(index)}}
-          </each>`;
-    }
-}
-
-
-class ListItem extends Bob {
-
-    constructor(data) {
-	super(data);
-    }
-
-
-    template() {
-       // assumes the data in the array has key itemName
-        return 
-         `<div>
-             <p>{itemName}</p>
-          </div>`;
-    }
-}
 ```
 
-## Conditionals
+-  In the project root file, import your custom template
 
 ```js
 
-class ListItem extends Bob {
-
-    constructor(data) {
-	super(data);
-    }
+    import MyCustomTemplate from './customtemplate';
 
 
-    template() {
-       // for conditionals, use the check keyword tag. it accepts an attribute
-       // 'test' where a predicate can be passed. Be sure to use data.{key} to access
-       // the value
-       // Notice the two possible branches: good / bad
-       // <bad> can usually be left empty. Up to you
-       // Nesting conditionals might work....need to double check  
-        return 
-         `<div>
-             <check test="data.itemName.length > 5">
-                 <good>
-                     <p>{itemName}</p>
-                 </good>
-                 <bad>
-                   ------
-                 </bad>
-	     </check>
-          </div>`;
-    }
-}
+    // in an index.html file, create an app mount and create a variable for it. the content of the built custom template will be appended there
+
+    const appMount = document.getElementById('app');
+
+    const myCustomTemplate = new MyCustomTemplate({'name': 'Custom Template});
+
+    appMount.innerHTML += myCustomTemplate.build().render();
 ```
 
-## Recursive templates
+-  Transpile the project root file `webpack [path/to/project_root_file] --output ./dist/main.js`
+-  Create a script tag declaration in an index.html file `<script src="./dist/main.js"></script>`
+-  Open the index.html file to view the built template
 
-```js
-import Bob from "../Bob";
 
-// a little tricky
-export default class RecursiveMenu extends Bob {
-  constructor(data) {
-    super();
-    this.data = data;
-    this.childTemplates = { MenuItem };
-  }
-  //the root component will iterate over the recursive object
-  template() {
-    return `
-      <each>
-        <ul>
-          {{MenuItem|(index)}}
-        </ul>
-      </each>
-    `;
-  }
-}
+### Viewing examples
 
-//the recursive object will pull out the name of the node
-//and call the root component to perform the operation again
-//ie (Node [children -> (Node [children -> (..)])])
-class MenuItem extends Bob {
-  constructor(data) {
-    super(data);
-    this.childTemplates = { RecursiveMenu };
-  }
+-  After cloning the repo, `cd ./bobjs/src`
+-  Run `npm run build` to generate the compiled examples script
+-  Open `./bobjs/src/index.html` to view examples
+-  After editing examples, rerun `npm run build` and refresh the webpage
 
-  template() {
-    return `
-      <li>
-        {nodeName}
-        {{RecursiveMenu|nodes}}
-      </li>
-    `;
-  }
-}
-
-export class MenuTitle extends Bob {
-  constructor() {
-    super();
-  }
-
-  template() {
-    return `<h2>Recursive Menu</h2>`;
-  }
-}
-```
-
+ 
 ### Todo
 -  Add tests
 -  npm
