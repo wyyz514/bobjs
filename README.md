@@ -1,35 +1,18 @@
 # bobjs
 build HTML templates with Bob
 
-## Installation
+## Installation and Usage
 -  Clone repo
--  Import Bob from `src/Bob` to your file
--  Follow the steps after `View Examples locally`
+-  Import Bob from `src/Bob` to your template file
+-  Follow the steps from `Basic Template Class Declaration`
 
-## Viewing Examples locally (assumes a Webpack installation)
+## Viewing and Modifying Examples locally (assumes a Webpack global install)
 -   Clone repo
 -   `cd src && webpack index.js` to create `src/dist/main.js`
 -   Open `src/index.html`. Personally I run a Python server in the `src` directory `python -m SimpleHTTPServer [PORT]` or `python -m http.server [PORT]` for Python v3+
 -   Update any of the Example files in `src/Examples` and rerun `webpack index.js` in the `src` directory. Notice that all examples are imported into `src/Examples.js`. If creating a new file, make sure to import it in `src/Examples.js` and include the template invocation in the `template()` function.
 -   Reload `localhost:[PORT]`
 
-## Building templates
-
-```js
-// Assumes there is a template file already created
-// containing a Template class
-import Template from 'template';
-
-// an array or object
-const data = [] || {}
-
-// You only need to build the root template
-const template = new Template(data);
-const appMount = document.getElementById('app');
-
-// returns a compiled string of the template with data interpolated
-appMount.innerHTML += template.build().render();
-```
 ## Basic Template Class Declaration
 
 ```js
