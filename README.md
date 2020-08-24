@@ -45,7 +45,7 @@ how to use Bob to create HTML templates. The examples cover topics such as basic
 
 -  Transpile the project root file `webpack [path/to/project_root_file] --output ./dist/main.js`
 -  Create a script tag declaration in an index.html file `<script src="./dist/main.js"></script>`
--  Open the index.html file to view the built template
+-  Open the `index.html` file to view the built template
 
 
 ### Viewing examples
@@ -97,7 +97,7 @@ export default class MyCustomTemplate extends Bob {
 #### Data-bound templates
 
 ```js
-Assume the following data has been passed into the root template MyCustomTemplate in the root project file
+// Assume the following data has been passed into the root template MyCustomTemplate in the root project file
 
 const data = [
     {
@@ -151,6 +151,10 @@ class JobCard extends Bob {
         }
 }
 ```
+
+The `Examples` folder contains examples on how to use conditions in templates and how to create templates to consume recursive data. The examples can be viewed and modified locally
+by following instructions in the `Viewing examples` section above. 
+
 
 ### Todo
 -  Add tests
