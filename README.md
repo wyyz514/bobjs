@@ -14,12 +14,13 @@ how to use Bob to create HTML templates. The examples cover topics such as basic
 
     import Bob from './bobjs/src/Bob';
 
-    class MyCustomTemplate extends Bob {
+    export default class MyCustomTemplate extends Bob {
 
 	constructor (data) {
 	    super(data);
         }
-
+        
+        // {name} is a property of the data object passed in the constructor
         template () {
 	    return `<h1>My custom template is {name}</h1>`;
         }
@@ -55,6 +56,101 @@ how to use Bob to create HTML templates. The examples cover topics such as basic
 -  After editing examples, rerun `npm run build` and refresh the webpage
 
  
+### Composing templates
+
+
+#### Simple templates
+
+```js
+
+import Bob from './bobjs/src/Bob';
+
+
+export default class MyCustomTemplate extends Bob {
+    
+    constructor (data) {
+        super(data);
+        this.childTemplates = { TemplateHeader };
+    }
+   
+    template () {
+	return `
+            {{TemplateHeader}}
+            <p>Custom template name: {name}</p>     
+        `;
+    }
+
+
+    class TemplateHeader extends Bob {
+
+        template () {
+            return `
+                <h1>My custom template header</h1>
+            `;
+        }
+    }
+}
+
+
+```
+
+#### Data-bound templates
+
+```js
+Assume the following data has been passed into the root template MyCustomTemplate in the root project file
+
+const data = [
+    {
+	'name': 'Bob',
+        'job': 'builds'
+    },
+    {
+	'name': 'Slash',
+	'job': 'shreds'
+    }
+];
+
+```
+
+```js
+
+import Bob from './bobjs/src/Bob';
+
+export default class MyCustomTemplate extends Bob {
+
+	constructor (data) {
+	    super(data);
+	    this.childTemplates = { JobCard };
+        }
+	
+        /*
+	   using 'each' here since the data passed to the root template is an array. notice how the template JobCard is bound to each item index.
+           if it is necessary to bind an object to the template, use {{TemplateName|objectKey}} where objectKey is a property in data. note that only
+	   objects, arrays or array indices (when using 'each') can be bound to a template.
+	*/
+        template () {
+	    return `
+                <each>
+		    {{JobCard|(index)}}	
+                </each>	
+            `;
+        }
+}
+
+class JobCard extends Bob {
+
+	constructor (data) {
+     	    this.data = data;
+        }
+
+
+        template ()  {
+	    return `
+		<div>My name is {name} and I {job}.</div>
+            `;
+        }
+}
+
 ### Todo
 -  Add tests
 -  npm
