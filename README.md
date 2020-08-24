@@ -54,6 +54,7 @@ how to use Bob to create HTML templates. The examples cover topics such as basic
 -  Run `npm run build` to generate the compiled examples script
 -  Open `./bobjs/src/index.html` to view examples
 -  After editing examples, rerun `npm run build` and refresh the webpage
+-  Note that the `src/index.js` file contains all the data used in the `Examples` files
 
  
 ### Composing templates
