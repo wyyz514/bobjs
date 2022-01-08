@@ -63,12 +63,14 @@ export default class Lumber {
             tagName: "",
             text: "",
             children: [],
+            attributes: [],
             selfTerminating: true
           };
-          const [fullMatch, match] = Lumber._props(
+          const [fullMatch, match, attributes] = Lumber._props(
             selfTerminatingTagRegex,
             subTemplate
           );
+          parsedSelfTerminating.attributes = attributes;
           parsedSelfTerminating.tagName = match;
           pointerIndex += fullMatch.length;
           parsed.children.push(parsedSelfTerminating);
